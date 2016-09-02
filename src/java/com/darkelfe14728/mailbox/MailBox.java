@@ -3,6 +3,7 @@ package com.darkelfe14728.mailbox;
 import java.util.Arrays;
 
 import com.darkelfe14728.mailbox.proxy.AbstractProxy;
+import com.darkelfe14728.mailbox.registry.ItemRegistry;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -71,6 +72,10 @@ public class MailBox
 		metadata.description = META_DESCRIPTION;
 		metadata.authorList = Arrays.asList(META_AUTHORS);
 		metadata.credits = META_CREDITS;
+		
+		LogHelper.info("Registering items");
+		ItemRegistry.init();
+		ItemRegistry.register();
 	}
 	
 	/**
@@ -82,6 +87,9 @@ public class MailBox
 	public void init (FMLInitializationEvent event)
 	{
 		LogHelper.info("Initialization");
+		
+		LogHelper.info("Registering items recipes");
+		ItemRegistry.registerRecipes();
 	}
 	
 	/**
